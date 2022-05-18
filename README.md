@@ -6,7 +6,7 @@
 
 The features:
 - Create and remove boxes
-- Cearsh boxes by content
+- Search boxes by content
 - Change language from English to Spanish or viceversa
 - Local storage for boxes created and language preferences
 
