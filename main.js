@@ -5,7 +5,9 @@ const form = document.querySelector("#main form");
 const boxList = document.querySelector("#boxList");
 const filterSpace = document.querySelector("#filter");
 const boxes = [];
-const example = document.querySelector("#example");
+const example = document.querySelector("#exampleTitle");
+const nameField = document.querySelector('#input-title');
+const contentField = document.querySelector('#input-content');
 
 /* Objects */
 class Box {
@@ -25,8 +27,8 @@ filterSpace.addEventListener('keyup', searchItem);
 /* Event listener functions */
 function addItem(evt) {
     evt.preventDefault();
-    let boxName = document.querySelector('#input-title').value;
-    let content = document.querySelector('#input-content').value;
+    let boxName = nameField.value;
+    let content = contentField.value;
     (!boxName || !content) && alert("Please fill both, title and content.");
     createHTMLBox(boxName, content);
     boxes.push(new Box(boxName,content));

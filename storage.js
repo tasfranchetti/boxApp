@@ -1,4 +1,7 @@
 /* Storage related functions */
+//localStorage.clear();
+
+/* Boxes */
 function storeNewBox() {
     localStorage.clear("boxList");
     const storeBoxes = (key, value) => {localStorage.setItem(key, value)};
@@ -24,5 +27,7 @@ function removeStoredItem(targetBox) {
     storeNewBox();
 }
 
-//localStorage.clear();
+
+
+
 

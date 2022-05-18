@@ -8,9 +8,9 @@
   <title>Just a box list with vanilla JS</title>
 </head>         
 <body class="bg-dark">
+  <button id="language" class="btn btn-dark btn-sm m-2 float-right ">Español</button>
 
   <header id="main-header" class="bg-info text-white p-4 mb-3">
-    <button class="btn btn-dark btn-sm float-right ">Español</button>
     <div class="container">
       <h1 id="header-title">The amazing box list<span style="display:none">123</span></h1>
       <div class="col-md-6 align-self-center">
@@ -21,23 +21,24 @@
   <div class="container">
    <div id="main" class="card card-body">
     
-    <h2 class="title">Add a box</h2>
+    <h2 id="titleAdd" class="title">Add a box</h2>
     <form class="form-block mb-3">
       <input type="text" id="input-title" class="form-control mb-3" placeholder="Title">
       <input type="text" id="input-content" class="form-control mb-3"placeholder="Content">
-      <input type="submit" class="btn btn-info mb-3" value="Submit">
+      <input type="submit" class="btn btn-info mb-3" value="OK">
     </form>
 
-    <h2 class="title">Your boxes</h2>
+    <h2 id="titleList" class="title">Your boxes</h2>
     <ul id="boxList" class="list-group">
-      <li id="example" class="list-group-item">Box 1
+      <li id="exampleTitle" class="list-group-item">Box 1
         <button class="btn btn-danger btn-sm float-right delete">X</button>
-        <p class='boxContent'>This is just an example of a box, remove it and create yours!</p>
+        <p id="exampleText" class='boxContent'>This is just an example of a box, remove it and create yours!</p>
       </li>
     </ul>
    </div>
    
   <script src="main.js"></script>
+  <script src="switch.js"></script>
   <script src="storage.js"></script>
 </body>
 </html>
