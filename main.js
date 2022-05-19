@@ -22,8 +22,7 @@ class Box {
 /* Event listeners */
 form.addEventListener('submit', addItem);
 boxList.addEventListener('click', removeItem);
-//Lesson learned: I tried to apply the above event listener to the button instead of the ul. It worked, but I was only able to delete the first item. Maybe because I was using the same ID in all the buttons and IDs are unique! But also there seems to be a issue with the scope. 
-//The eventListener for this case must be applied to the whole Ul list, not only the button.
+//The eventListener for this case must be applied to the whole Ul list, not only the button. 
 filterSpace.addEventListener('keyup', searchItem);
 
 /* Event listener functions */
@@ -57,10 +56,8 @@ function createHTMLBox(boxName, content) {
 function removeItem(evt){
     let li = evt.target.parentElement;
     let targetBox = evt.target.previousSibling.data;
-    //remove from storage 
-    removeStoredItem(targetBox);
-    //remove from HTML
-    evt.target.classList.contains('delete') && confirmation(li) //&& boxList.removeChild(li);
+    //remove from HTML and storage 
+    evt.target.classList.contains('delete') && confirmation(li, targetBox) //&& boxList.removeChild(li);
 }
 
 function searchItem(evt){
@@ -73,7 +70,7 @@ function searchItem(evt){
     });
 }
 
-function confirmation(li) {
+function confirmation(li, targetBox) {
     if (localStorage.getItem("language") == "Espanol")  {
         Swal.fire({
             title: 'Seguro queres borrar?',
@@ -87,6 +84,7 @@ function confirmation(li) {
             if (result.isConfirmed) {
               Swal.fire('Listo!', 'La caja fue eliminada','success');
               boxList.removeChild(li);
+              removeStoredItem(targetBox);
             }
         })    
     } else {
@@ -102,6 +100,7 @@ function confirmation(li) {
             if (result.isConfirmed) {
               Swal.fire('Deleted!', 'Your file has been deleted.','success');
               boxList.removeChild(li);
+              removeStoredItem(targetBox);
             }
         })        
     } 
