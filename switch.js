@@ -36,6 +36,7 @@ function switchToEnglish(){
     exampleTitle.firstChild.data = "Box 1";
     exampleText.firstChild.data  = "This is just an example of a box, remove it and create yours!";
 
+    localStorage.removeItem("language");
     localStorage.setItem("language", "English")
 }
 
@@ -55,6 +56,7 @@ function switchToSpanish(){
     exampleTitle.firstChild.data = "Caja 1";
     exampleText.firstChild.data  = "Esta es solo un ejemplo, borralo y agregá tus cajas!";
 
+    localStorage.removeItem("language");
     localStorage.setItem("language", "Espanol");
 }
 

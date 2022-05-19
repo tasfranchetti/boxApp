@@ -1,3 +1,5 @@
+//agregar sweet alert
+
 //pending language switch
 
 /* Values */
@@ -58,7 +60,7 @@ function removeItem(evt){
     //remove from storage 
     removeStoredItem(targetBox);
     //remove from HTML
-    evt.target.classList.contains('delete') && confirm('Are you sure?') && boxList.removeChild(li);
+    evt.target.classList.contains('delete') && confirmation(li) //&& boxList.removeChild(li);
 }
 
 function searchItem(evt){
@@ -69,6 +71,40 @@ function searchItem(evt){
         itemName.toLowerCase().indexOf(text) != -1 ? item.parentElement.style.display = 'block' : item.parentElement.style.display = 'none';
         console.log(Array);
     });
+}
+
+function confirmation(li) {
+    if (localStorage.getItem("language") == "Espanol")  {
+        Swal.fire({
+            title: 'Seguro queres borrar?',
+            text: "Esto no podrá revertirse!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí,borrar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire('Listo!', 'La caja fue eliminada','success');
+              boxList.removeChild(li);
+            }
+        })    
+    } else {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire('Deleted!', 'Your file has been deleted.','success');
+              boxList.removeChild(li);
+            }
+        })        
+    } 
 }
 
 
