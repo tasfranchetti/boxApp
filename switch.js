@@ -1,6 +1,4 @@
 
-//Language change
-
 const languageBtn = document.querySelector("#language");
 const mainTitle = document.querySelector("#header-title");
 const titleAdd = document.querySelector("#titleAdd");
@@ -9,6 +7,7 @@ const exampleText = document.querySelector("#exampleText");
 
 
 languageBtn.addEventListener('click', changeLanguage);
+//The button has to be placed in body if I want to change tags on all the body. 
 
 function changeLanguage(){
     (localStorage.getItem("language") == "Espanol") ? switchToEnglish(): switchToSpanish();
@@ -33,9 +32,10 @@ function switchToEnglish(){
 
     //Box list
     titleList.innerText = "Your boxes";
-    exampleTitle.firstChild.data = "Box 1";
+    example.firstChild.data = "Box 1";
     exampleText.firstChild.data  = "This is just an example of a box, remove it and create yours!";
 
+    localStorage.removeItem("language");
     localStorage.setItem("language", "English")
 }
 
@@ -52,9 +52,10 @@ function switchToSpanish(){
 
     //Box list
     titleList.innerText = "Tus cajas";
-    exampleTitle.firstChild.data = "Caja 1";
+    example.firstChild.data = "Caja 1";
     exampleText.firstChild.data  = "Esta es solo un ejemplo, borralo y agregá tus cajas!";
 
+    localStorage.removeItem("language");
     localStorage.setItem("language", "Espanol");
 }
 

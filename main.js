@@ -1,5 +1,3 @@
-//pending language switch
-
 /* Values */
 const form = document.querySelector("#main form");
 const boxList = document.querySelector("#boxList");
@@ -18,14 +16,13 @@ class Box {
 }
 
 /* Event listeners */
-form.addEventListener('submit', addItem);
-boxList.addEventListener('click', removeItem);
-//Lesson learned: I tried to apply the above event listener to the button instead of the ul. It worked, but I was only able to delete the first item. Maybe because I was using the same ID in all the buttons and IDs are unique! But also there seems to be a issue with the scope. 
-//The eventListener for this case must be applied to the whole Ul list, not only the button.
-filterSpace.addEventListener('keyup', searchItem);
+form.addEventListener('submit', addBox);
+boxList.addEventListener('click', removeBox);
+//The eventListener for this case must be applied to the whole Ul list, not only the button. 
+filterSpace.addEventListener('keyup', searchBox);
 
 /* Event listener functions */
-function addItem(evt) {
+function addBox(evt) {
     evt.preventDefault();
     let boxName = nameField.value;
     let content = contentField.value;
@@ -52,16 +49,50 @@ function createHTMLBox(boxName, content) {
     boxList.appendChild(li);
 }
 
-function removeItem(evt){
+function removeBox(evt){
     let li = evt.target.parentElement;
     let targetBox = evt.target.previousSibling.data;
-    //remove from storage 
-    removeStoredItem(targetBox);
-    //remove from HTML
-    evt.target.classList.contains('delete') && confirm('Are you sure?') && boxList.removeChild(li);
+    //remove from HTML and storage 
+    confirmation(li, targetBox) //&& boxList.removeChild(li);
 }
 
-function searchItem(evt){
+function confirmation(li, targetBox) {
+    if (localStorage.getItem("language") == "Espanol")  {
+        Swal.fire({
+            title: 'Seguro queres borrar?',
+            text: "Esto no podrá revertirse!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí,borrar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire('Listo!', 'La caja fue eliminada','success');
+              boxList.removeChild(li);
+              removeStoredItem(targetBox);
+            }
+        })    
+    } else {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire('Deleted!', 'Your file has been deleted.','success');
+              boxList.removeChild(li);
+              removeStoredItem(targetBox);
+            }
+        })        
+    } 
+}
+
+function searchBox(evt){
     let text = evt.target.value.toLowerCase();
     let items = boxList.getElementsByTagName('p');
     Array.from(items).forEach(function(item){
@@ -70,5 +101,6 @@ function searchItem(evt){
         console.log(Array);
     });
 }
+
 
 

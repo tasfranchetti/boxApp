@@ -4,7 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Manifest PWA -->
+  <link rel="manifest" href="manifest.json">
+  <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <!-- Sweet Alert-->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- PWA items -->
+  <meta name="theme-color" content="#ef5e64">
+  <link rel="apple-touch-icon" href="images/icons/icon-512x512.png">
+  <!-- Title-->
   <title>Just a box list with vanilla JS</title>
 </head>         
 <body class="bg-dark">
@@ -36,7 +45,12 @@
       </li>
     </ul>
    </div>
-   
+  
+  <script>
+    if('serviceWorker' in navigator) {
+      navigator.serviceWorker.register("serviceWorker.js");
+    }
+  </script>
   <script src="main.js"></script>
   <script src="switch.js"></script>
   <script src="storage.js"></script>
