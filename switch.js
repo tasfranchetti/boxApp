@@ -1,6 +1,4 @@
 
-//Language change
-
 const languageBtn = document.querySelector("#language");
 const mainTitle = document.querySelector("#header-title");
 const titleAdd = document.querySelector("#titleAdd");

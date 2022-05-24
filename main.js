@@ -1,7 +1,3 @@
-//agregar sweet alert
-
-//pending language switch
-
 /* Values */
 const form = document.querySelector("#main form");
 const boxList = document.querySelector("#boxList");
@@ -20,13 +16,13 @@ class Box {
 }
 
 /* Event listeners */
-form.addEventListener('submit', addItem);
-boxList.addEventListener('click', removeItem);
+form.addEventListener('submit', addBox);
+boxList.addEventListener('click', removeBox);
 //The eventListener for this case must be applied to the whole Ul list, not only the button. 
-filterSpace.addEventListener('keyup', searchItem);
+filterSpace.addEventListener('keyup', searchBox);
 
 /* Event listener functions */
-function addItem(evt) {
+function addBox(evt) {
     evt.preventDefault();
     let boxName = nameField.value;
     let content = contentField.value;
@@ -53,21 +49,11 @@ function createHTMLBox(boxName, content) {
     boxList.appendChild(li);
 }
 
-function removeItem(evt){
+function removeBox(evt){
     let li = evt.target.parentElement;
     let targetBox = evt.target.previousSibling.data;
     //remove from HTML and storage 
-    evt.target.classList.contains('delete') && confirmation(li, targetBox) //&& boxList.removeChild(li);
-}
-
-function searchItem(evt){
-    let text = evt.target.value.toLowerCase();
-    let items = boxList.getElementsByTagName('p');
-    Array.from(items).forEach(function(item){
-        let itemName = item.firstChild.textContent;
-        itemName.toLowerCase().indexOf(text) != -1 ? item.parentElement.style.display = 'block' : item.parentElement.style.display = 'none';
-        console.log(Array);
-    });
+    confirmation(li, targetBox) //&& boxList.removeChild(li);
 }
 
 function confirmation(li, targetBox) {
@@ -105,5 +91,16 @@ function confirmation(li, targetBox) {
         })        
     } 
 }
+
+function searchBox(evt){
+    let text = evt.target.value.toLowerCase();
+    let items = boxList.getElementsByTagName('p');
+    Array.from(items).forEach(function(item){
+        let itemName = item.firstChild.textContent;
+        itemName.toLowerCase().indexOf(text) != -1 ? item.parentElement.style.display = 'block' : item.parentElement.style.display = 'none';
+        console.log(Array);
+    });
+}
+
 
 

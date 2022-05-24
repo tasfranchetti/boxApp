@@ -3,7 +3,7 @@
 
 /* Boxes */
 function storeNewBox() {
-    localStorage.clear("boxList");
+    localStorage.removeItem("boxList");
     const storeBoxes = (key, value) => {localStorage.setItem(key, value)};
     storeBoxes("boxList", JSON.stringify(boxes));
 }
@@ -23,7 +23,7 @@ function removeStoredItem(targetBox) {
     const index = boxes.findIndex(box => {
         return box.boxName === targetBox;
     });
-    boxes.splice(index, 1);
+    index != -1 && boxes.splice(index, 1);
     storeNewBox();
 }
 
