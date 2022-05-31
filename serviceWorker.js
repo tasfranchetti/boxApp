@@ -1,4 +1,4 @@
-const assets = ["/", "index.html", "main.js", "switch.js", "storage.js"]
+const assets = ["/", "./index.html", "./main.js", "./modules/add-box-module.js", "./modules/remove-box-module.js", "./modules/search-box-module.js", "./modules/retreive-box-module.js", "./language-module.js"]
 
 //storing the needed resources (or assets) in cache
 self.addEventListener("install", event => {

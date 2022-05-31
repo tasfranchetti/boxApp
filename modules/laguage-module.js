@@ -1,25 +1,16 @@
+/* Resources */
+import {filterSpace, languageBtn, mainTitle, titleAdd, titleList, exampleText, nameField, example, contentField} from "../main.js";
 
-const languageBtn = document.querySelector("#language");
-const mainTitle = document.querySelector("#header-title");
-const titleAdd = document.querySelector("#titleAdd");
-const titleList = document.querySelector("#titleList");
-const exampleText = document.querySelector("#exampleText");
-
-
-languageBtn.addEventListener('click', changeLanguage);
-//The button has to be placed in body if I want to change tags on all the body. 
-
-function changeLanguage(){
+/* Module */
+export function changeLanguage(){
     (localStorage.getItem("language") == "Espanol") ? switchToEnglish(): switchToSpanish();
 }
 
-document.addEventListener("DOMContentLoaded", retreiveLanguage);
-
-function retreiveLanguage(){
+export function retreiveLangSetting(){
     (localStorage.getItem("language") == "Espanol") ? switchToSpanish() : switchToEnglish();
 }
 
-function switchToEnglish(){
+export function switchToEnglish(){
      //button
     languageBtn.innerText = "Español";
     //header
@@ -39,7 +30,7 @@ function switchToEnglish(){
     localStorage.setItem("language", "English")
 }
 
-function switchToSpanish(){
+export function switchToSpanish(){
     //button
     languageBtn.innerText = "English";
     //header
@@ -58,9 +49,4 @@ function switchToSpanish(){
     localStorage.removeItem("language");
     localStorage.setItem("language", "Espanol");
 }
-
-
-
-
-
 
