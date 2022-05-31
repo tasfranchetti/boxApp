@@ -23,6 +23,7 @@
 - Storage and JSON
 - Libraries (Bootstrap and Sweet Alert)
 - Promises and AJAX
+- Modules
 
 ```
 
