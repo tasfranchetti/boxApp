@@ -9,7 +9,7 @@
 - Search boxes by content
 - Change language from English to Spanish or viceversa
 - Local storage for boxes created and language preferences
-- Download the app and use without conection
+- Download and use the app offline
 
 ```
 
@@ -23,6 +23,7 @@
 - Storage and JSON
 - Libraries (Bootstrap and Sweet Alert)
 - Promises and AJAX
+- Modules
 
 ```
 
